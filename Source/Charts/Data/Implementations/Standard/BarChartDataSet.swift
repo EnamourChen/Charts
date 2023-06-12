@@ -50,7 +50,7 @@ open class BarChartDataSet: BarLineScatterCandleBubbleChartDataSet, BarChartData
     
     /// the overall entry count, including counting each stack-value individually
     private var _entryCountStacks = 0
-    
+
     /// Calculates the total number of entries this DataSet represents, including
     /// stacks. All values belonging to a stack are calculated separately.
     private func calcEntryCountIncludingStacks(entries: [BarChartDataEntry])
@@ -122,7 +122,11 @@ open class BarChartDataSet: BarLineScatterCandleBubbleChartDataSet, BarChartData
 
     /// the alpha value (transparency) that is used for drawing the highlight indicator bar. min = 0.0 (fully transparent), max = 1.0 (fully opaque)
     open var highlightAlpha = CGFloat(120.0 / 255.0)
-    
+
+    open var barCornerRadius : CGFloat = .zero
+
+    open var barRoundingCorners : UIRectCorner = .allCorners
+
     // MARK: - NSCopying
     
     open override func copy(with zone: NSZone? = nil) -> Any
@@ -136,6 +140,8 @@ open class BarChartDataSet: BarLineScatterCandleBubbleChartDataSet, BarChartData
         copy.barBorderWidth = barBorderWidth
         copy.barBorderColor = barBorderColor
         copy.highlightAlpha = highlightAlpha
+        copy.barCornerRadius = barCornerRadius
+        copy.barRoundingCorners = barRoundingCorners
         return copy
     }
 }

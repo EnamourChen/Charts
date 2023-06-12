@@ -63,6 +63,8 @@ class BarChartTests: XCTestCase {
     func setupDefaultStackedDataSet(chartDataEntries: [ChartDataEntry]) -> BarChartDataSet {
         let dataSet = BarChartDataSet(entries: chartDataEntries, label: "Stacked bar chart unit test data")
         dataSet.drawIconsEnabled = false
+        dataSet.barCornerRadius = 5
+        dataSet.barRoundingCorners = [.topLeft, .topRight]
         dataSet.iconsOffset = CGPoint(x: 0, y: -10.0)
         dataSet.colors = Array(arrayLiteral: NSUIColor(red: 46 / 255.0, green: 204 / 255.0, blue: 113 / 255.0, alpha: 1.0),
                                NSUIColor(red: 241 / 255.0, green: 196 / 255.0, blue: 15 / 255.0, alpha: 1.0),

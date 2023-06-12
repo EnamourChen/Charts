@@ -30,13 +30,17 @@ public protocol BarChartDataSetProtocol: BarLineScatterCandleBubbleChartDataSetP
     
     /// the width used for drawing borders around the bars. If borderWidth == 0, no border will be drawn.
     var barBorderWidth : CGFloat { get set }
-
+    
     /// the color drawing borders around the bars.
     var barBorderColor: NSUIColor { get set }
-
+    
     /// the alpha value (transparency) that is used for drawing the highlight indicator bar. min = 0.0 (fully transparent), max = 1.0 (fully opaque)
     var highlightAlpha: CGFloat { get set }
     
     /// array of labels used to describe the different values of the stacked bars
     var stackLabels: [String] { get set }
+    
+    var barCornerRadius : CGFloat { get set }
+    
+    var barRoundingCorners : UIRectCorner { get set }
 }
