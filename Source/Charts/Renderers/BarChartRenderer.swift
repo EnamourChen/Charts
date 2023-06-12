@@ -719,7 +719,7 @@ open class BarChartRenderer: BarLineScatterCandleBubbleRenderer
                 
                 context.setFillColor(set.highlightColor.cgColor)
                 context.setAlpha(set.highlightAlpha)
-                
+
                 let isStack = high.stackIndex >= 0 && e.isStacked
                 
                 let y1: Double
@@ -749,8 +749,16 @@ open class BarChartRenderer: BarLineScatterCandleBubbleRenderer
                 prepareBarHighlight(x: e.x, y1: y1, y2: y2, barWidthHalf: barData.barWidth / 2.0, trans: trans, rect: &barRect)
                 
                 setHighlightDrawPos(highlight: high, barRect: barRect)
-                
-                context.fill(barRect)
+
+                let bezierPath = UIBezierPath(
+                    roundedRect: barRect,
+                    byRoundingCorners: set.barRoundingCorners,
+                    cornerRadii: CGSize(width: set.barCornerRadius, height: set.barCornerRadius)
+                )
+                context.addPath(bezierPath.cgPath)
+                context.drawPath(using: .fill)
+
+                // context.fill(barRect)
             }
         }
     }
